@@ -17,7 +17,7 @@ RUN buildDeps='ca-certificates wget gdebi' \
   && wget -q -P /tmp http://www.microworldsystems.com/download/linux/soho/deb/escan-antivirus-wks-${ESCAN}.amd64.deb \
   && DEBIAN_FRONTEND=noninteractive gdebi -n /tmp/escan-antivirus-wks-${ESCAN}.amd64.deb \
   && echo "===> Clean up unnecessary files..." \
-  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
+  && apt-get purge -y $buildDeps \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
