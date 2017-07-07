@@ -14,7 +14,7 @@ func TestParseResult(t *testing.T) {
 		fmt.Print(err)
 	}
 
-	results := ParseZonerOutput(string(r), nil)
+	results := ParseEScanOutput(string(r), nil)
 
 	if true {
 		t.Log("results: ", results.Result)

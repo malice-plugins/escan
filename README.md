@@ -4,9 +4,9 @@ malice-escan
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
-[![Docker Image](https://img.shields.io/badge/docker%20image-162MB-blue.svg)](https://hub.docker.com/r/malice/escan/)
+[![Docker Image](https://img.shields.io/badge/docker%20image-1.38GB-blue.svg)](https://hub.docker.com/r/malice/escan/)
 
-Malice [eScan](http://www.zonerantivirus.com/stahnout) AntiVirus Plugin
+Malice [eScan](https://escanav.com/en/linux-antivirus/antivirus-for-linux-file-servers.asp) AntiVirus Plugin
 
 ### Dependencies
 
@@ -90,6 +90,10 @@ Documentation
 -	[To create a eScan scan micro-service](https://github.com/malice-plugins/escan/blob/master/docs/web.md)
 -	[To post results to a webhook](https://github.com/malice-plugins/escan/blob/master/docs/callback.md)
 -	[To update the AV definitions](https://github.com/malice-plugins/escan/blob/master/docs/update.md)
+
+### TODO
+
+ - [ ] add ability to enable `--pack/--heuristic/--max-size` scanning options
 
 ### Issues
 

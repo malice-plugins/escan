@@ -66,22 +66,13 @@ func assert(err error) {
 	}
 }
 
-func startZavService(ctx context.Context) error {
-	// EScan needs to have the daemon started first
-	_, err := utils.RunCommand(ctx, "/etc/init.d/zavd", "start", "--no-daemon")
-	return err
-}
-
 // AvScan performs antivirus scan
 func AvScan(timeout int) EScan {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer cancel()
 
-	// start service
-	assert(startZavService(ctx))
-
-	results, err := utils.RunCommand(ctx, "zavcli", path)
+	results, err := utils.RunCommand(ctx, "escan", path)
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
@@ -89,8 +80,8 @@ func AvScan(timeout int) EScan {
 	}).Debug("EScan output: ", results)
 
 	if err != nil {
-		// EScan exits with error status 11 if it finds a virus
-		if err.Error() != "exit status 11" {
+		// EScan exits with error status 1 if it finds a virus
+		if err.Error() != "exit status 1" {
 			log.WithFields(log.Fields{
 				"plugin":   name,
 				"category": category,
@@ -101,11 +92,11 @@ func AvScan(timeout int) EScan {
 		}
 	}
 
-	return EScan{Results: ParseZonerOutput(results, err)}
+	return EScan{Results: ParseEScanOutput(results, err)}
 }
 
-// ParseZonerOutput convert escan output into ResultsData struct
-func ParseZonerOutput(zonerout string, err error) ResultsData {
+// ParseEScanOutput convert escan output into ResultsData struct
+func ParseEScanOutput(escanout string, err error) ResultsData {
 
 	if err != nil {
 		return ResultsData{Error: err.Error()}
@@ -113,12 +104,12 @@ func ParseZonerOutput(zonerout string, err error) ResultsData {
 
 	escan := ResultsData{Infected: false}
 
-	lines := strings.Split(zonerout, "\n")
+	lines := strings.Split(escanout, "\n")
 
 	// Extract Virus string
 	for _, line := range lines {
 		if len(line) != 0 {
-			if strings.Contains(line, "INFECTED") {
+			if strings.Contains(line, "[INFECTED]") {
 				result := extractVirusName(line)
 				if len(result) != 0 {
 					escan.Result = result
@@ -137,28 +128,25 @@ func ParseZonerOutput(zonerout string, err error) ResultsData {
 
 // extractVirusName extracts Virus name from scan results string
 func extractVirusName(line string) string {
-	keyvalue := strings.Split(line, "INFECTED")
+	keyvalue := strings.Split(line, "[INFECTED]")
 	return strings.Trim(strings.TrimSpace(keyvalue[1]), "[]")
 }
 
 func getEngine() string {
 	var engine = ""
 
-	// start service
-	startZavService(context.Background())
-
-	results, err := utils.RunCommand(nil, "zavcli", "--version-zavd")
+	results, err := utils.RunCommand(nil, "escan", "--version")
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
 		"path":     path,
-	}).Debug("EScan DB version: ", results)
+	}).Debug("EScan version: ", results)
 	assert(err)
 
 	for _, line := range strings.Split(results, "\n") {
 		if len(line) != 0 {
-			if strings.Contains(line, "ZAVDB version:") {
-				engine = strings.TrimSpace(strings.TrimPrefix(line, "ZAVDB version:"))
+			if strings.Contains(line, "MicroWorld eScan For Linux Version :") {
+				engine = strings.TrimSpace(strings.TrimPrefix(line, "MicroWorld eScan For Linux Version :"))
 			}
 		}
 	}
@@ -168,7 +156,7 @@ func getEngine() string {
 func updateAV(ctx context.Context) error {
 	fmt.Println("Updating EScan...")
 	// EScan needs to have the daemon started first
-	output, err := utils.RunCommand(nil, "/etc/init.d/zavd", "update")
+	output, err := utils.RunCommand(nil, "escan", "--update")
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
@@ -196,7 +184,7 @@ func generateMarkDownTable(e EScan) string {
 
 	t := template.Must(template.New("").Parse(tpl))
 
-	err := t.Execute(&tplOut, z)
+	err := t.Execute(&tplOut, e)
 	if err != nil {
 		log.Println("executing template:", err)
 	}
@@ -352,7 +340,7 @@ func main() {
 				fmt.Println(escan.Results.MarkDown)
 			} else {
 				escan.Results.MarkDown = ""
-				zonerJSON, err := json.Marshal(escan)
+				escanJSON, err := json.Marshal(escan)
 				utils.Assert(err)
 				if c.Bool("post") {
 					request := gorequest.New()
@@ -361,12 +349,12 @@ func main() {
 					}
 					request.Post(os.Getenv("MALICE_ENDPOINT")).
 						Set("X-Malice-ID", utils.Getopt("MALICE_SCANID", utils.GetSHA256(path))).
-						Send(string(zonerJSON)).
+						Send(string(escanJSON)).
 						End(printStatus)
 
 					return nil
 				}
-				fmt.Println(string(zonerJSON))
+				fmt.Println(string(escanJSON))
 			}
 		} else {
 			log.Fatal(fmt.Errorf("please supply a file to scan with malice/escan"))

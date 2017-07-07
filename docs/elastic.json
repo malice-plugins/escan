@@ -1,35 +1,21 @@
 {
-  "took": 79,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "failed": 0
-  },
-  "hits": {
-    "total": 1,
-    "max_score": 1,
-    "hits": [
+  "error": {
+    "root_cause": [
       {
-        "_index": "malice",
-        "_type": "samples",
-        "_id": "AV0ef3YDcx8GXzhUSRwe",
-        "_score": 1,
-        "_source": {
-          "plugins": {
-            "av": {
-              "zoner": {
-                "engine": "1979756",
-                "infected": true,
-                "markdown": "#### Zoner\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | EICAR.Test.File-NoVirus | 1979756 | 20170707 |\n",
-                "result": "EICAR.Test.File-NoVirus",
-                "updated": "20170707"
-              }
-            }
-          },
-          "scan_date": "2017-07-07T19:20:56.052116014Z"
-        }
+        "type": "index_not_found_exception",
+        "reason": "no such index",
+        "resource.type": "index_or_alias",
+        "resource.id": "malice",
+        "index_uuid": "_na_",
+        "index": "malice"
       }
-    ]
-  }
+    ],
+    "type": "index_not_found_exception",
+    "reason": "no such index",
+    "resource.type": "index_or_alias",
+    "resource.id": "malice",
+    "index_uuid": "_na_",
+    "index": "malice"
+  },
+  "status": 404
 }
