@@ -9,7 +9,7 @@ LABEL malice.plugin.docker.engine="*"
 
 ENV ESCAN 7.0-20
 
-RUN buildDeps='ca-certificates wget gdebi sudo' \
+RUN buildDeps='ca-certificates wget gdebi' \
   && set -x \
   && apt-get update -qq \
   && apt-get install -yq $buildDeps libc6-i386 \
@@ -17,7 +17,7 @@ RUN buildDeps='ca-certificates wget gdebi sudo' \
   && wget -q -P /tmp http://www.microworldsystems.com/download/linux/soho/deb/escan-antivirus-wks-${ESCAN}.amd64.deb \
   && DEBIAN_FRONTEND=noninteractive gdebi -n /tmp/escan-antivirus-wks-${ESCAN}.amd64.deb \
   && echo "===> Clean up unnecessary files..." \
-  && apt-get purge -y --auto-remove $buildDeps \
+  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -46,7 +46,7 @@ RUN buildDeps='ca-certificates \
   && go get \
   && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan \
   && echo "===> Clean up unnecessary files..." \
-  && apt-get purge -y --auto-remove $buildDeps \
+  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /go /usr/local/go
 
