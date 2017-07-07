@@ -1,4 +1,4 @@
-FROM ubuntu:precise
+FROM ubuntu:xenial
 
 LABEL maintainer "https://github.com/blacktop"
 
@@ -25,3 +25,5 @@ RUN escan --update
 ADD http://www.eicar.org/download/eicar.com.txt /malware/EICAR
 
 ENTRYPOINT bash
+
+# escan --version
