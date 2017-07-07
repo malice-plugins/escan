@@ -9,12 +9,13 @@ LABEL malice.plugin.docker.engine="*"
 
 ENV ESCAN 7.0-20
 
-RUN buildDeps='ca-certificates wget' \
+RUN buildDeps='ca-certificates wget gdebi' \
+  && set -x \
   && apt-get update -qq \
   && apt-get install -yq $buildDeps libc6-i386 \
   && echo "===> Install eScan AV..." \
   && wget -q -P /tmp http://www.microworldsystems.com/download/linux/soho/deb/escan-antivirus-wks-${ESCAN}.amd64.deb \
-  && dpkg -i /tmp/escan-antivirus-wks-${ESCAN}.amd64.deb \
+  && DEBIAN_FRONTEND=noninteractive gdebi -n /tmp/escan-antivirus-wks-${ESCAN}.amd64.deb \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
