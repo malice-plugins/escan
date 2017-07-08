@@ -1,5 +1,5 @@
 {
-  "took": 53,
+  "took": 86,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -7,8 +7,29 @@
     "failed": 0
   },
   "hits": {
-    "total": 0,
-    "max_score": null,
-    "hits": []
+    "total": 1,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "malice",
+        "_type": "samples",
+        "_id": "AV0f2ThKNvmCTvbn9H0B",
+        "_score": 1,
+        "_source": {
+          "plugins": {
+            "av": {
+              "escan": {
+                "engine": "7.0-20",
+                "infected": true,
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | EICAR-Test-File (not a virus)(DB) | 7.0-20 | 20170708 |\n",
+                "result": "EICAR-Test-File (not a virus)(DB)",
+                "updated": "20170708"
+              }
+            }
+          },
+          "scan_date": "2017-07-08T01:38:35.707848283Z"
+        }
+      }
+    ]
   }
 }
