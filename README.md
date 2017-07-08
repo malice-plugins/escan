@@ -65,9 +65,9 @@ This will output to stdout and POST to malice results API webhook endpoint.
 {
   "escan": {
     "infected": true,
-    "result": "EICAR.Test.File-NoVirus",
-    "engine": "1979756",
-    "updated": "20170707"
+    "result": "EICAR-Test-File (not a virus)(DB)",
+    "engine": "7.0-20",
+    "updated": "20170708"
   }
 }
 ```
@@ -79,7 +79,7 @@ This will output to stdout and POST to malice results API webhook endpoint.
 #### eScan
 | Infected      | Result      | Engine      | Updated      |
 |:-------------:|:-----------:|:-----------:|:------------:|
-| true | EICAR.Test.File-NoVirus | 1979756 | 20170707 |
+| true | EICAR-Test-File (not a virus)(DB) | 7.0-20 | 20170708 |
 
 ---
 
