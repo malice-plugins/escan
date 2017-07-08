@@ -4,7 +4,7 @@ malice-escan
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
-[![Docker Image](https://img.shields.io/badge/docker%20image-839MB-blue.svg)](https://hub.docker.com/r/malice/escan/)
+[![Docker Image](https://img.shields.io/badge/docker%20image-1.31GB-blue.svg)](https://hub.docker.com/r/malice/escan/)
 
 Malice [eScan](https://escanav.com/en/linux-antivirus/antivirus-for-linux-file-servers.asp) AntiVirus Plugin
 

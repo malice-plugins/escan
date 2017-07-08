@@ -72,7 +72,7 @@ func AvScan(timeout int) EScan {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer cancel()
 
-	results, err := utils.RunCommand(ctx, "escan", path)
+	results, err := utils.RunCommand(ctx, "escan", "-ly", path)
 	log.WithFields(log.Fields{
 		"plugin":   name,
 		"category": category,
