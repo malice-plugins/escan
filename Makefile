@@ -40,6 +40,9 @@ avtest:
 	@echo "===> ${NAME} Version"
 	@docker run --init --rm --entrypoint=sh $(ORG)/$(NAME):$(VERSION) -c "escan --version" > tests/av.version || true
 
+update:
+	@docker run --init --rm $(ORG)/$(NAME):$(VERSION) -V update
+
 test:
 	docker rm -f elasticsearch || true
 	docker run --init -d --name elasticsearch -p 9200:9200 blacktop/elasticsearch
