@@ -1,9 +1,10 @@
 {
-  "took": 86,
+  "took": 44,
   "timed_out": false,
   "_shards": {
     "total": 1,
     "successful": 1,
+    "skipped": 0,
     "failed": 0
   },
   "hits": {
@@ -13,7 +14,7 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "AV0f2ThKNvmCTvbn9H0B",
+        "_id": "lJCL5GQBc3koCAyaEsJs",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -21,13 +22,13 @@
               "escan": {
                 "engine": "7.0-20",
                 "infected": true,
-                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | EICAR-Test-File (not a virus)(DB) | 7.0-20 | 20170708 |\n",
-                "result": "EICAR-Test-File (not a virus)(DB)",
-                "updated": "20170708"
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20180729 |\n",
+                "result": "Backdoor.Lecna.AB(DB)",
+                "updated": "20180729"
               }
             }
           },
-          "scan_date": "2017-07-08T01:38:35.707848283Z"
+          "scan_date": "2018-07-29T05:37:56.837706419Z"
         }
       }
     ]

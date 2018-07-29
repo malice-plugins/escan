@@ -21,15 +21,15 @@ RUN set -x \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV GO_VERSION 1.8.3
+ENV GO_VERSION 1.10.3
 
 COPY . /go/src/github.com/malice-plugins/escan
 RUN buildDeps='ca-certificates \
-               build-essential \
-               gdebi-core \
-               libssl-dev \
-               mercurial \
-               git-core' \
+  build-essential \
+  gdebi-core \
+  libssl-dev \
+  mercurial \
+  git-core' \
   && apt-get update -qq \
   && apt-get install -yq $buildDeps --no-install-recommends \
   && set -x \
@@ -43,7 +43,7 @@ RUN buildDeps='ca-certificates \
   && export GOPATH=/go \
   && go version \
   && go get \
-  && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan \
+  && go build -ldflags "-s -w -X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/avscan \
   && echo "===> Clean up unnecessary files..." \
   && SUDO_FORCE_REMOVE=yes apt-get purge -y $buildDeps \
   && apt-get clean \

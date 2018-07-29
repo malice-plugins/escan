@@ -1,5 +1,5 @@
 #### eScan
 | Infected      | Result      | Engine      | Updated      |
 |:-------------:|:-----------:|:-----------:|:------------:|
-| true | EICAR-Test-File (not a virus)(DB) | 7.0-20 | 20170708 |
+| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20180729 |
 
