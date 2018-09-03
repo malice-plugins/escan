@@ -1,5 +1,5 @@
 {
-  "took": 44,
+  "took": 51,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -8,13 +8,13 @@
     "failed": 0
   },
   "hits": {
-    "total": 1,
+    "total": 2,
     "max_score": 1,
     "hits": [
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "lJCL5GQBc3koCAyaEsJs",
+        "_id": "Jx8UnWUBuMWw6ze3V1jE",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -22,13 +22,33 @@
               "escan": {
                 "engine": "7.0-20",
                 "infected": true,
-                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20180729 |\n",
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20180903 |\n",
                 "result": "Backdoor.Lecna.AB(DB)",
-                "updated": "20180729"
+                "updated": "20180903"
               }
             }
           },
-          "scan_date": "2018-07-29T05:37:56.837706419Z"
+          "scan_date": "2018-09-03T01:38:00.759745832Z"
+        }
+      },
+      {
+        "_index": "malice",
+        "_type": "samples",
+        "_id": "KB8UnWUBuMWw6ze3eFhP",
+        "_score": 1,
+        "_source": {
+          "plugins": {
+            "av": {
+              "escan": {
+                "engine": "7.0-20",
+                "infected": false,
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 7.0-20 | 20180903 |\n",
+                "result": "",
+                "updated": "20180903"
+              }
+            }
+          },
+          "scan_date": "2018-09-03T01:38:09.101364215Z"
         }
       }
     ]

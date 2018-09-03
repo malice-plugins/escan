@@ -1,29 +1,31 @@
-# escan
+# malice-escan
 
 [![Circle CI](https://circleci.com/gh/malice-plugins/escan.png?style=shield)](https://circleci.com/gh/malice-plugins/escan)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Docker Stars](https://img.shields.io/docker/stars/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/escan.svg)](https://hub.docker.com/r/malice/escan/)
-[![Docker Image](https://img.shields.io/badge/docker%20image-974MB-blue.svg)](https://hub.docker.com/r/malice/escan/)
+[![Docker Image](https://img.shields.io/badge/docker%20image-1.4GB-blue.svg)](https://hub.docker.com/r/malice/escan/)
 
-Malice [eScan](https://escanav.com/en/linux-antivirus/antivirus-for-linux-file-servers.asp) AntiVirus Plugin
+> Malice [eScan](https://escanav.com/en/linux-antivirus/antivirus-for-linux-file-servers.asp) AntiVirus Plugin
+
+---
 
 ### Dependencies
 
 - [ubuntu:xenial (_118 MB_\)](https://hub.docker.com/_/ubuntu/)
 
-### Installation
+## Installation
 
-1.  Install [Docker](https://www.docker.io/).
-2.  Download [trusted build](https://hub.docker.com/r/malice/escan/) from public [DockerHub](https://hub.docker.com): `docker pull malice/escan`
+1. Install [Docker](https://www.docker.io/).
+2. Download [trusted build](https://hub.docker.com/r/malice/escan/) from public [DockerHub](https://hub.docker.com): `docker pull malice/escan`
 
-### Usage
+## Usage
 
 ```
 docker run --rm malice/escan EICAR
 ```
 
-#### Or link your own malware folder:
+### Or link your own malware folder:
 
 ```bash
 $ docker run --rm -v /path/to/malware:/malware:ro malice/escan FILE
