@@ -180,7 +180,7 @@ func getUpdatedDate() string {
 		return BuildTime
 	}
 	updated, err := ioutil.ReadFile("/opt/malice/UPDATED")
-	utils.Assert(err)
+	assert(err)
 	return string(updated)
 }
 
@@ -327,10 +327,10 @@ func main() {
 
 		if c.Args().Present() {
 			path, err = filepath.Abs(c.Args().First())
-			utils.Assert(err)
+			assert(err)
 
 			if _, err := os.Stat(path); os.IsNotExist(err) {
-				utils.Assert(err)
+				assert(err)
 			}
 
 			escan := AvScan(c.Int("timeout"))
@@ -358,7 +358,7 @@ func main() {
 			} else {
 				escan.Results.MarkDown = ""
 				escanJSON, err := json.Marshal(escan)
-				utils.Assert(err)
+				assert(err)
 				if c.Bool("post") {
 					request := gorequest.New()
 					if c.Bool("proxy") {
@@ -380,5 +380,5 @@ func main() {
 	}
 
 	err := app.Run(os.Args)
-	utils.Assert(err)
+	assert(err)
 }
