@@ -46,6 +46,10 @@ avtest:
 	@docker run --init --rm --entrypoint=sh $(ORG)/$(NAME):$(VERSION) -c "escan -ly /bin/cat" > tests/av.clean || true
 	@echo "===> ${NAME} Version"
 	@docker run --init --rm --entrypoint=sh $(ORG)/$(NAME):$(VERSION) -c "escan --version" > tests/av.version || true
+	@echo "===>  $(MALWARE) Test"
+	@docker run --init -it --rm --entrypoint=bash -v $(PWD)/tests:/malware/tests $(ORG)/$(NAME):$(VERSION) -c "escan -ly $(MALWARE)" > tests/av.malware_scan || true
+	@echo "===>  $(NOT_MALWARE) Test"
+	@docker run --init -it --rm --entrypoint=bash -v $(PWD)/tests:/malware/tests $(ORG)/$(NAME):$(VERSION) -c "escan -ly $(NOT_MALWARE)" > tests/av.clean_scan || true
 
 update:
 	@docker run --init --rm $(ORG)/$(NAME):$(VERSION) -V update

@@ -1,5 +1,5 @@
 {
-  "took": 129,
+  "took": 59,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -14,7 +14,7 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "KVuy1GgBhajy4puiynqI",
+        "_id": "02t_1WgBeDl6ZWHH8kBH",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -22,19 +22,19 @@
               "escan": {
                 "engine": "7.0-20",
                 "infected": true,
-                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20190209 |\n",
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| true | Backdoor.Lecna.AB(DB) | 7.0-20 | 20190210 |\n",
                 "result": "Backdoor.Lecna.AB(DB)",
-                "updated": "20190209"
+                "updated": "20190210"
               }
             }
           },
-          "scan_date": "2019-02-09T23:58:33.5858677Z"
+          "scan_date": "2019-02-10T03:42:38.652555151Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "Kluy1GgBhajy4pui6np_",
+        "_id": "1GuA1WgBeDl6ZWHHBUCr",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -42,13 +42,13 @@
               "escan": {
                 "engine": "7.0-20",
                 "infected": false,
-                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 7.0-20 | 20190209 |\n",
+                "markdown": "#### eScan\n| Infected      | Result      | Engine      | Updated      |\n|:-------------:|:-----------:|:-----------:|:------------:|\n| false |  | 7.0-20 | 20190210 |\n",
                 "result": "",
-                "updated": "20190209"
+                "updated": "20190210"
               }
             }
           },
-          "scan_date": "2019-02-09T23:58:41.789477Z"
+          "scan_date": "2019-02-10T03:42:43.624950744Z"
         }
       }
     ]
