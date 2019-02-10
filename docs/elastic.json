@@ -1,5 +1,5 @@
 {
-  "took": 54,
+  "took": 49,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -14,7 +14,7 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "na6C1WgBr5fieNYa1_Vx",
+        "_id": "h_OT1WgBoW_gla6Yfhmg",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -28,13 +28,13 @@
               }
             }
           },
-          "scan_date": "2019-02-10T03:45:48.388519819Z"
+          "scan_date": "2019-02-10T04:03:59.762506019Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "nq6C1WgBr5fieNYa6vXl",
+        "_id": "iPOT1WgBoW_gla6YlRmy",
         "_score": 1,
         "_source": {
           "plugins": {
@@ -48,7 +48,7 @@
               }
             }
           },
-          "scan_date": "2019-02-10T03:45:53.372301346Z"
+          "scan_date": "2019-02-10T04:04:05.680045655Z"
         }
       }
     ]
