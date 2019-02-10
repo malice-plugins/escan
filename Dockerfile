@@ -43,7 +43,7 @@ RUN buildDeps='wget ca-certificates gdebi' \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.gnupg
 
 # Ensure ca-certificates is installed for elasticsearch to use https
-RUN apt-get update -qq && apt-get install -yq --no-install-recommends ca-certificates \
+RUN apt-get update -qq && apt-get install -yq --no-install-recommends ca-certificates wget \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Update eScan
